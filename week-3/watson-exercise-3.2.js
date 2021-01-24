@@ -1,6 +1,6 @@
 /*
 ===============================================
-; Title: Assignment 3.2 - The Factory Pattern
+; Title: Exercise 3.2 - The Factory Pattern
 ; Author: Professor Krasso
 ; Date: 23 January 2021
 ; Modified By: Mark Watson
