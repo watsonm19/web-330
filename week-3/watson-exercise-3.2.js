@@ -38,7 +38,7 @@ const header = require("../watson-header.js");
 
 
 /**
- * Description: Factory function
+ * Description: constructor function
  * Params: properties
  * CLASS
  */
@@ -49,7 +49,7 @@ function Postgres(properties) {
 }
 
 /**
- * Description: Factory function
+ * Description: constructor function
  * Params: properties
  * CLASS
  */
@@ -61,7 +61,7 @@ function MySql(properties) {
 }
 
 /**
- * Description: Factory function
+ * Description: constructor function
  * Params: properties
  * CLASS
  */
@@ -73,7 +73,7 @@ function Oracle(properties) {
 }
 
 /**
- * Description: Factory function
+ * Description: constructor function
  * Params: properties
  * CLASS
  */
@@ -84,17 +84,17 @@ function Informix(properties) {
 }
 
 /**
- * Description: Main factory function
+ * Description: Main constructor function
  * Params: n/a
- * CONSTRUCTOR
+ * FACTORY PATTERN CONSTRUCTOR
  */
 function DatabaseFactory() {}
 
-// prototype for the type of class - set to MySql by default
+// prototype for the type of class - set to MySql as default
 DatabaseFactory.prototype.databaseClass = MySql;
 
 /**
- * Description: Prototype function for creating the specific factory object
+ * Description: Prototype factory function for creating an object
  * Params: properties
  * FACTORY PATTERN PROTOTYPE
  */
