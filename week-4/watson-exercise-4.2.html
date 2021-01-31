@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+===============================================
+; Title: Exercise 4.2
+; Author: Professor Krasso
+; Date: 31 January 2021
+; Modified By: Mark Watson
+; Description: This program shows how to use jQuery for an AJAX GET request.
+===============================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 4.2</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>HTTP GET and POST Operations</h1>
+    <button id="get-btn">GET</button>
+
+    <!-- LOCAL script -->
+    <script>
+      // click event for button
+      $('#get-btn').click(function() {
+        // GET request
+        $.get('https://dog.ceo/api/breeds/image/random', function(data, status) {
+          console.log(`Data: ${JSON.stringify(data)} \nStatus: ${status}`);
+        })
+      });
+    </script>
+  </body>
+</html>
