@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+===============================================
+; Title: Exercise 4.3 - HTTP PUT and Delete Operations
+; Author: Professor Krasso
+; Date: 31 January 2021
+; Modified By: Mark Watson
+; Description: This program shows how to use jQuery for an AJAX DELETE request.
+===============================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 4.3</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>HTTP PUT and DELETE Operations</h1>
+    <button id="delete-btn">DELETE</button>
+
+    <!-- LOCAL script -->
+    <script>
+      $(function() {
+        $('#delete-btn').click(function() {
+          $.ajax({
+            url: 'http://httpbin.org/delete',
+            dataType: 'json',
+            type: 'DELETE',
+            data: {username: 'Mark', password: 'mystery'},
+            success: function(data, status) {
+              console.log("Username: " + data.form.username + "\nPassword: " + data.form.password + "\nStatus: " + status);
+            }
+          })
+        })
+      });
+    </script>
+  </body>
+</html>
