@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+===============================================
+; Title: Exercise 5.2 - The Proxy Pattern
+; Author: Professor Krasso
+; Date: 07 February 2021
+; Modified By: Mark Watson
+; Description: This demonstrates the use of the Proxy Pattern in a jQuery script.
+===============================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- jquery Reference Library -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Exercise 5.2</a>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="m-5">
+      <h2>The Proxy Pattern</h2>
+      <p>Click this button to see a secret car!</p>
+      <button class="btn btn-info" id="test-btn">Proxy Result</button>
+      <br>
+      <span id="proxy-test-output"></span>
+    </div>
+
+    <!-- horizontal line -->
+    <hr>
+
+    <!-- LOCAL script - jQuery -->
+    <script>
+      $(function() {
+
+        // object
+        const car = {
+          make: 'Tesla',
+          model: 'Model X',
+          display: function (){
+            // clears text
+            $('#proxy-test-output').html("");
+            $('#proxy-test-output').append(`<br>Make: ${this.make}<br> Model: ${this.model}`);
+          }
+        }
+
+        // click event to display proxy results
+        $('#test-btn').click($.proxy(car, 'display'));
+
+      });
+    </script>
+  </body>
+</html>
