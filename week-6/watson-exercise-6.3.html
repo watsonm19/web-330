@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+  ===============================================
+; Title: Exercise 6.3 - ViewModel Object Literals
+; Author: Professor Krasso
+; Date: 12 February 2021
+; Modified By: Mark Watson
+; Description: This demonstrates the use of a knockout.js ViewModel Object Literal.
+===============================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Exercise 6.3</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-5.3.1.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">ViewModel Object Literals</a>
+    </nav>
+
+    <!-- Main content -->
+    <div class="form-group mt-4">
+      <label for="firstName">First Name:</label>
+      <input type="text" class="form-control alert-primary" data-bind="value: firstName"
+      id="firstName">
+      <label for="lastName">Last Name:</label>
+      <input type="text" class="form-control alert-primary" data-bind="value: lastName"
+      id="lastName">
+      <label for="email">Email Address:</label>
+      <input type="text" class="form-control alert-warning" data-bind="value: emailAddress"
+      id="email">
+    </div>
+
+    <!-- ViewModel -->
+    <script type="text/javascript">
+      // ViewModel object
+      const personViewModel = {
+        firstName: 'Penny',
+        lastName: 'Simons',
+        emailAddress: 'pennys@address.net'
+      };
+
+      // activate knockout
+      ko.applyBindings(personViewModel);
+    </script>
+  </body>
+</html>
