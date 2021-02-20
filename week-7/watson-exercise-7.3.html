@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+===============================================
+; Title: Exercise 7.3 - The "foreach" Binding
+; Author: Professor Krasso
+; Date: 20 February 2021
+; Modified By: Mark Watson
+; Description: This demonstrates the "foreach" binding using Knockout.
+===============================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  <title>Exercise 7.3</title>
+
+  <!-- Stylesheet - Bootstrap -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+    crossorigin="anonymous"
+  />
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src="../knockout-5.3.1.js"></script>
+</head>
+<body>
+  <div role="main" class="container">
+    <br>
+    <!-- page title -->
+    <h2>The "foreach" Binding</h2>
+    <br>
+
+    <!-- textbook pricing table -->
+    <table class="table table-dark table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: textbooks"> <!-- foreach binding displays all data in the ViewModels observable array -->
+        <tr>
+          <td data-bind="text: title"></td>
+          <td>$<span data-bind="text: price"></span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+  </div>
+
+  <!-- ViewModel -->
+  <script>
+    // ViewModel object
+    function TextbooksViewModel() {
+      // observable array of textbook data
+      this.textbooks = ko.observableArray([
+        {title: 'Anatomy Trains', price: 80},
+        {title: 'Born To Walk', price: 50},
+        {title: 'Exploring Interface Design', price: 45},
+        {title: 'Express In Action', price: 40},
+        {title: 'JavaScript: The Definitive Guide', price: 30},
+        {title: 'Learning JavaScript Design Patterns', price: 25}
+      ]);
+    }
+
+    // activate knockout.js
+    ko.applyBindings(new TextbooksViewModel());
+  </script>
+</body>
+</html>
