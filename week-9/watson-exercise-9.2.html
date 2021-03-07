@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+    ===============================================
+    ; Title: Exercise 9.2 - Hello MVC
+    ; Author: Professor Krasso
+    ; Date: 7 March 2021
+    ; Modified By: Mark Watson
+    ; Description: This shows how to use backbone.js as an MVC architecture.
+    ===============================================
+    -->
+    <meta charset="UTF-8" />
+    <title>Exercise 9.2</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    <!-- JavaScript references -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">Hello MVC</a>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main container -->
+    <div role="main" class="container">
+      <br />
+      <br />
+      <h1>Employee MVC Example</h1>
+      <p class="lead">Models and Collections</p>
+
+      <!-- Table -->
+      <div class="row">
+        <div class="col-sm-9">
+          <table class="table table-dark table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Models - backbone.js -->
+    <script>
+      // employee constructor
+      function Employee(id, name, salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+      }
+
+      // employee model
+      const EmployeeModel = Backbone.Model.extend({
+        defaults: {
+          id: "",
+          name: "",
+          salary: 0
+        }
+      });
+
+      // employee collection model
+      const EmployeeCollection = Backbone.Collection.extend({
+        model: EmployeeModel
+      });
+
+      // employee collection
+      const Employees = new EmployeeCollection();
+      // add employees to collection
+      Employees.add(new Employee("10", "Bob", 50000));
+      Employees.add(new Employee("11", "Linda", 30000));
+      Employees.add(new Employee("12", "Tina", 200));
+      Employees.add(new Employee("13", "Gene", 150));
+      Employees.add(new Employee("14", "Louise", 100));
+
+      // display employees in view
+      Employees.each(function(employee) {
+        $("#table-body").append(
+          "<tr>" +
+            "<td>" +
+            employee.get("id") +
+            "</td>" +
+            "<td>" +
+            employee.get("name") +
+            "</td>" +
+            "<td>" +
+            employee.get("salary") +
+            "</td>" +
+            "</tr>"
+        );
+      });
+    </script>
+  </body>
+</html>
